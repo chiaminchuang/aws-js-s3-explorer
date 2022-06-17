@@ -674,7 +674,8 @@ permissions and limitations under the License.
         // If initial bucket has been hard-coded above then use it, else try to
         // derive the initial bucket from the document URL (useful if index.html was
         // launched directly from within a bucket), else prompt the user.
-        if (s3exp_config.Bucket) {
+        s3exp_config.Prefix = hash !== "" ? hash.slice(1) : ""
+	if (s3exp_config.Bucket) {
             (s3exp_lister = s3list(s3exp_config, s3draw)).go();
         } else if (parser.hostname.endsWith('amazonaws.com')) {
             // Hostname is likely to be in one of the following forms:
